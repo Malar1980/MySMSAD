@@ -41,9 +41,11 @@ public class MySMSADDaoImpl implements MySMSADDao {
 
 		MySMSAD results = ViewByAdCode(mySmsAD.getAdCode());
 
+
 		if (results != null) {
 			results.setAdDetails(mySmsAD.getAdDetails());
 			manager.merge(results);
+			System.out.println("Update ADCODE"+mySmsAD.getAdCode());
 			return results;
 		} else {
 			throw new SMSADNotFoundException("adCode Not Found");

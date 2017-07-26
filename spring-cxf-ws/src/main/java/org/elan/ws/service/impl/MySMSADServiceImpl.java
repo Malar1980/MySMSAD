@@ -61,12 +61,14 @@ public class MySMSADServiceImpl implements MySMSADService {
 	@Transactional
 	@Override
 	public SMSADDetailResponse updateADService(SMSADDetailRequest smsAdDetailRequest) throws SMSADNotFoundException {
-
+		System.out.println("Update  smsAdDetailRequest  ADCODE    "+smsAdDetailRequest.getAdCode());
 		MySMSAD mySmsAd = new MySMSAD();
 		mySmsAd.setAdDetails(smsAdDetailRequest.getAdDetails());
+		mySmsAd.setAdCode(smsAdDetailRequest.getAdCode());
 		MySMSAD mySmsADReturn = dao.updateAd(mySmsAd);
-		mySmsADReturn.setAdDetails(mySmsADReturn.getAdDetails());
+		System.out.println("Update ySmsADReturn   ADCODE    "+mySmsADReturn .getAdCode());
 		SMSADDetailResponse smsAddetailResponse = new SMSADDetailResponse();
+		smsAddetailResponse.setAdDetails(mySmsADReturn.getAdDetails());
 		smsAddetailResponse.setMessage("Successfully Updated");
 		return smsAddetailResponse;
 	}
