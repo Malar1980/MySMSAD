@@ -53,22 +53,7 @@ public class MySMSADDaoImpl implements MySMSADDao {
 
 	@Override
 	public MySMSAD ViewByAdCode(String adCode) throws SMSADNotFoundException {
-		/*CriteriaBuilder cb = manager.getCriteriaBuilder();
-		CriteriaQuery cq = cb.createQuery();
-		Root e = cq.from(MySMSAD.class);
-		ParameterExpression<String> p = cb.parameter(String.class);
-		cq.select(e).where(cb.gt(c.get("population"), p));
-		
-		cq.where(cb.equal(e.get("adCode"), adCode));
-		Query query = manager.createQuery(cq);
-		List<MySMSAD> result = query.getResultList();*/
-
-		/* CriteriaQuery<Country> q = cb.createQuery(Country.class);  
-		 Root<Country> c = q.from(Country.class);  
-		 q.select(c);  
-		 ParameterExpression<Integer> p = cb.parameter(Integer.class); 
-		 q.where(cb.gt(c.get("population"), p));
-		*/
+	
 		 CriteriaBuilder cb = manager.getCriteriaBuilder();
 			CriteriaQuery<MySMSAD> cq = cb.createQuery(MySMSAD.class);
 			Root<MySMSAD> c = cq.from(MySMSAD.class);
