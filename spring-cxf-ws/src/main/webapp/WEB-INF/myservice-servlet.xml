@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:simple="http://cxf.apache.org/simple"
+	xmlns:soap="http://cxf.apache.org/bindings/soap" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+http://cxf.apache.org/simple http://cxf.apache.org/schemas/simple.xsd 
+http://cxf.apache.org/bindings/soap 
+http://cxf.apache.org/schemas/configuration/soap.xsd 
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd 
+">
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+		
+	
+	
+	<bean id="mySMSADService" class="org.elan.ws.service.impl.MySMSADServiceImpl" />
+	<jaxws:endpoint implementor="#mySMSADService"
+		address="/mySMSADService">
+		<jaxws:binding>
+			<soap:soapBinding style="document" use="literal" version="1.1" />
+		</jaxws:binding>
+	</jaxws:endpoint> 
+	
+	
+	
+	
+	
+	<!-- REST SERVER -->
+	 
+	
+	 <bean id="wadlProvider" class="org.apache.cxf.jaxrs.model.wadl.WadlGenerator">
+	</bean>
+	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+	
+	<jaxrs:server id="restContainer" address="/rest">
+	<jaxrs:providers>
+	    <ref bean="wadlProvider" />
+	    <ref bean="jsonProvider" />
+	</jaxrs:providers>
+	<jaxrs:serviceBeans>
+	    <ref bean="mySMSADService"/>
+	         
+	</jaxrs:serviceBeans>
+	
+	
+	<jaxrs:extensionMappings>
+	    <entry key="json" value="application/json" />
+	</jaxrs:extensionMappings>
+	</jaxrs:server>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</beans>
