@@ -14,5 +14,5 @@ http://cxf.apache.org/bindings/soap
 http://cxf.apache.org/schemas/configuration/soap.xsd 
 http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd 
 ">
-	<bean id="mySMSADServiceImpl" class="org.elan.soap.MySMSADServiceImpl" />
+	<bean id="mySMSADDaoImpl" class="org.elan.soap.MySMSADDaoImpl" />
 </beans>

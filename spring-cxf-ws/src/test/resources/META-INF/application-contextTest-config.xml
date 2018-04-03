@@ -50,10 +50,10 @@
    </bean> -->
     <!-- <context:property-placeholder location="classpath:smsad.properties"/> -->
    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-      <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-      <property name="url" value="jdbc:mysql://localhost:3306/smsad" />
-      <property name="username" value="root" />
-      <property name="password" value="mutha" />
+      <property name="driverClassName" value="org.h2.Driver" />
+      <property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;INIT=RUNSCRIPT FROM 'classpath:schema.sql'\;" />
+      <property name="username" value="sa" />
+      <property name="password" value="" />
    </bean>
    
      
